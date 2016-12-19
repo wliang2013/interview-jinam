@@ -21,7 +21,13 @@ public class Service {
 
     public Subscription getPhotos(final GetPhotosCallback callback) {
 
-        return networkService.getPhotos()
+        // These query params can be customized.
+        String feature = "fresh_today";
+        String page = "1";
+        String limit = "10";
+        String imageSize = "4";
+
+        return networkService.getPhotos(feature, page, limit, imageSize)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .onErrorResumeNext(new Func1<Throwable, Observable<? extends Photos>>() {

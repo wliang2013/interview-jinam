@@ -68,7 +68,7 @@ public class MainActivityFragment extends Fragment implements PhotoInteractor {
             presenter.getPhotos();
             mAdapter = new PhotoAdapter(getContext(), Collections.EMPTY_LIST);
         }
-        //mAdapter.setContext(getContext());
+
         mRecyclerView.setAdapter(mAdapter);
 
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeToRefresh);

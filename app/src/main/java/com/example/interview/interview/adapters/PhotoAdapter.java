@@ -24,10 +24,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
         this.context = context;
     }
 
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {// create a new view
         View v = LayoutInflater.from(parent.getContext())
