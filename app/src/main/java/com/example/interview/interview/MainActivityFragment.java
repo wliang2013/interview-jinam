@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.interview.interview.adapters.PhotoAdapter;
+import com.example.interview.interview.model.Photos;
 import com.example.interview.interview.network.NetworkModule;
 
 import retrofit2.Call;
@@ -51,26 +52,26 @@ public class MainActivityFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                task1();
+                task2();
             }
         }).run();
     }
 
-    private void task1() {
-        // Task 1: get network response
+    private void task2() {
+        // Task 2: parse data and print out.
         NetworkModule networkModule = new NetworkModule();
-        Call<String> response = networkModule.provideNetworkService().getPhotos();
-        response.enqueue(new Callback<String>() {
+        Call<Photos> response = networkModule.provideNetworkService().getPhotos();
+        response.enqueue(new Callback<Photos>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Log.d(TAG, "retrofit success: " + response.body());
+            public void onResponse(Call<Photos> call, Response<Photos> response) {
+                Log.d(TAG, "retrofit success: " +
+                        (response.body().getPhotos().size() > 0 ? response.body().getPhotos().get(0).getUrl(): "no photos"));
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<Photos> call, Throwable t) {
+                Log.e(TAG, "retrofit success: " + t.getLocalizedMessage());
             }
         });
     }
 }
-
-
