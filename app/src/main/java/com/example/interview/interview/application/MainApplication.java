@@ -8,6 +8,8 @@ import com.example.interview.interview.network.NetworkModule;
 
 /**
  * Created by jinseoknam on 12/19/16.
+ *
+ * Uses Dagger (Dependency Injection), Retrofit (Networking), RXAndroid (RXJava), Glide (Image)
  */
 public class MainApplication extends Application {
 
